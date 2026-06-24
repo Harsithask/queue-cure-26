@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waiting Room · Queue Cure '26</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <h1>🏥 Waiting Room Display</h1>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <span class="doctor-id-pill" id="doctorPill">Doctor: doc1</span>
+    <span id="statusDot" class="status-dot"></span>
+    <span id="statusText">Connecting...</span>
+    <button id="soundToggle" class="btn-outline" style="padding:6px 12px;">🔊</button>
+    <button id="themeToggle" class="btn-outline" style="padding:6px 12px;">🌙</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="now-serving">
+      <div class="label">Now Serving</div>
+      <div class="big-token" id="currentTokenDisplay">
+        <div class="skeleton skeleton-token"></div>
+      </div>
+      <div class="patient-name" id="currentNameDisplay">Loading...</div>
+      <div class="patient-name" id="roomDisplay" style="font-size:1rem; color:var(--muted); margin-top:4px;"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h2>Your Position</h2>
+    <div id="myTokenSection">
+      <p style="color:var(--muted);">
+        Enter your token number to see your live position & estimated wait.
+      </p>
+      <div style="display:flex; gap:8px;">
+        <input type="number" id="myTokenInput" placeholder="e.g. 14" />
+        <button id="findBtn" class="btn-primary">Find Me</button>
+      </div>
+    </div>
+    <div id="myStatusBox" style="display:none; margin-top:14px;">
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="num" id="aheadCount">-</div>
+          <div class="lbl">Tokens Ahead</div>
+        </div>
+        <div class="stat-box">
+          <div class="num" id="waitMins">-</div>
+          <div class="lbl">Est. Wait (mins)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h2>Full Queue (<span id="queueCount">0</span> waiting)</h2>
+    <ul class="queue-list" id="queueList">
+      <li class="skeleton skeleton-text"></li>
+      <li class="skeleton skeleton-text"></li>
+      <li class="skeleton skeleton-text"></li>
+    </ul>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="patient.js"></script>
+</body>
+</html>

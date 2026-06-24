@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Doctor Dashboard · Queue Cure '26</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <h1>👨‍⚕️ Doctor Dashboard</h1>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <span class="doctor-id-pill" id="doctorPill">Doctor: doc1</span>
+    <span id="statusDot" class="status-dot"></span>
+    <span id="statusText">Connecting...</span>
+    <button id="themeToggle" class="btn-outline" style="padding:6px 12px;">🌙</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="now-serving">
+      <div class="label">Currently With</div>
+      <div class="big-token" id="currentTokenDisplay">
+        <div class="skeleton skeleton-token"></div>
+      </div>
+      <div class="patient-name" id="currentNameDisplay">Loading...</div>
+      <div class="patient-name" id="roomDisplay" style="font-size:1rem; color:var(--muted); margin-top:4px;"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h2>Today's Stats</h2>
+    <div class="stat-row">
+      <div class="stat-box"><div class="num" id="seenCount">0</div><div class="lbl">Patients Seen</div></div>
+      <div class="stat-box"><div class="num" id="waitingCount">0</div><div class="lbl">Currently Waiting</div></div>
+      <div class="stat-box"><div class="num" id="avgTimeStat">0</div><div class="lbl">Avg Consult (min)</div></div>
+      <div class="stat-box"><div class="num" id="noShowStatCount">0</div><div class="lbl">No-Shows</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h2>Up Next (Waiting Queue)</h2>
+    <ul class="queue-list" id="queueList">
+      <li class="skeleton skeleton-text"></li>
+      <li class="skeleton skeleton-text"></li>
+    </ul>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="doctor.js"></script>
+</body>
+</html>
